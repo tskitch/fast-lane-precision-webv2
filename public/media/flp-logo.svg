@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+
+  <!-- Center everything at (256,286), rotation 0 for now -->
+  <g transform="translate(256 330) rotate(45)">
+
+    <!-- TOP-LEFT (WHITE) -->
+    <rect x="-150" y="-150" width="150" height="150" fill="white"/>
+
+    <!-- TOP-RIGHT (RED) -->
+    <rect x="0" y="-155" width="150" height="155" fill="#C10900"/>
+
+    <!-- BOTTOM-LEFT (BLACK) -->
+    <rect x="-155" y="0" width="155" height="150" fill="black"/>
+    <rect x="-93.75" y="-150" width="37.5" height="152" fill="black"/>
+    <rect x="-206.25" y="-150" width="57.25" height="300" fill="black"/>
+    <rect x="-206.25" y="-206.25" width="356.25" height="57.25" fill="#C10900"/>
+
+
+    <!-- BOTTOM-RIGHT left empty (transparent) -->
+    <!-- (nothing drawn here) -->
+
+  </g>
+
+</svg>
