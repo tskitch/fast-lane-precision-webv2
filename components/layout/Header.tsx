@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const links = [
   ["Quality", "/quality"], ["Industries", "/industries"], ["About", "/about"], ["Contact", "/contact"],
@@ -43,6 +44,7 @@ export function Header() {
           </div>
         </div>
         {links.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}
+        <ThemeToggle />
         <Link href="/contact" className="nav-cta">Request a Quote</Link>
       </nav>
       <button className="menu-button" onClick={() => setOpen(true)} aria-expanded={open} aria-controls="mobile-menu" aria-label="Open menu"><Menu /></button>
@@ -54,7 +56,10 @@ export function Header() {
               <Link key={`${href}-${i}`} href={href} onClick={() => setOpen(false)}><small>0{(i + 1).toString().padStart(2, "0")}</small>{name}<span>↗</span></Link>
             )}
           </nav>
-          <Link href="/contact" className="button button-light" onClick={() => setOpen(false)}>Request a Quote</Link>
+          <div className="button-row">
+            <Link href="/contact" className="button button-accent" onClick={() => setOpen(false)}>Request a Quote</Link>
+            <ThemeToggle />
+          </div>
         </div>
       )}
     </header>

@@ -25,7 +25,7 @@ export function RFQForm() {
       <label>Message / project details *<textarea name="details" required rows={7} /></label>
       <div className="upload-disabled" aria-disabled="true"><strong>DRAWING / CAD UPLOAD DISABLED</strong><span>Secure transfer endpoint required before launch.</span></div>
       <p className="security-notice">Do not upload export-controlled, proprietary, or sensitive technical files until Fast Lane Precision provides an approved secure transfer method.</p>
-      <button className="button button-dark" type="submit">Review Demo Submission ↗</button>
+      <button className="button button-accent" type="submit">Review Demo Submission ↗</button>
       {message && <p className="form-status" role="status">{message}</p>}
     </form>
   );

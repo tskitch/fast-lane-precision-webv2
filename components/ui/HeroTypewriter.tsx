@@ -5,48 +5,69 @@ import { useEffect, useState } from "react";
 type HeroTypewriterProps = {
   lines: string[];
   typingSpeed?: number;
+  deletingSpeed?: number;
   lineDelay?: number;
+  holdDuration?: number;
 };
 
-export function HeroTypewriter({ lines, typingSpeed = 70, lineDelay = 220 }: HeroTypewriterProps) {
+export function HeroTypewriter({
+  lines,
+  typingSpeed = 55,
+  deletingSpeed = 28,
+  lineDelay = 260,
+  holdDuration = 1800,
+}: HeroTypewriterProps) {
   const [visibleLines, setVisibleLines] = useState(() => lines.map(() => ""));
   const [activeLine, setActiveLine] = useState(0);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const reducedMotionTimer = setTimeout(() => {
+      const timer = setTimeout(() => {
         setVisibleLines(lines);
-        setActiveLine(lines.length);
+        setActiveLine(lines.length - 1);
       }, 0);
-      return () => clearTimeout(reducedMotionTimer);
+      return () => clearTimeout(timer);
     }
 
-    let lineIndex = 0;
-    let characterIndex = 0;
+    let cancelled = false;
     let timer: ReturnType<typeof setTimeout>;
 
-    const typeNextCharacter = () => {
+    function typeLine(lineIndex: number, charIndex: number) {
+      if (cancelled) return;
       if (lineIndex >= lines.length) {
-        setActiveLine(lines.length);
+        timer = setTimeout(() => deleteLine(lines.length - 1, lines[lines.length - 1].length), holdDuration);
         return;
       }
-      characterIndex += 1;
       setActiveLine(lineIndex);
-      setVisibleLines((current) => current.map((line, index) =>
-        index === lineIndex ? lines[lineIndex].slice(0, characterIndex) : line,
-      ));
-      if (characterIndex < lines[lineIndex].length) {
-        timer = setTimeout(typeNextCharacter, typingSpeed);
+      setVisibleLines((current) => current.map((line, i) => (i === lineIndex ? lines[lineIndex].slice(0, charIndex) : line)));
+      if (charIndex < lines[lineIndex].length) {
+        timer = setTimeout(() => typeLine(lineIndex, charIndex + 1), typingSpeed);
       } else {
-        lineIndex += 1;
-        characterIndex = 0;
-        timer = setTimeout(typeNextCharacter, lineDelay);
+        timer = setTimeout(() => typeLine(lineIndex + 1, 1), lineDelay);
       }
-    };
+    }
 
-    timer = setTimeout(typeNextCharacter, 350);
-    return () => clearTimeout(timer);
-  }, [lines, typingSpeed, lineDelay]);
+    function deleteLine(lineIndex: number, charIndex: number) {
+      if (cancelled) return;
+      if (lineIndex < 0) {
+        timer = setTimeout(() => typeLine(0, 1), lineDelay);
+        return;
+      }
+      setActiveLine(lineIndex);
+      setVisibleLines((current) => current.map((line, i) => (i === lineIndex ? lines[lineIndex].slice(0, charIndex) : line)));
+      if (charIndex > 0) {
+        timer = setTimeout(() => deleteLine(lineIndex, charIndex - 1), deletingSpeed);
+      } else {
+        timer = setTimeout(() => deleteLine(lineIndex - 1, lines[lineIndex - 1]?.length ?? 0), lineDelay / 2);
+      }
+    }
+
+    timer = setTimeout(() => typeLine(0, 1), 350);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [lines, typingSpeed, deletingSpeed, lineDelay, holdDuration]);
 
   return (
     <h1 className="hero-typewriter" aria-label={lines.join(" ")}>

@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { StickyCTA } from "@/components/ui/StickyCTA";
 import "./globals.css";
+
+const THEME_INIT_SCRIPT = `try{if(localStorage.getItem('flp-theme')==='light'){document.documentElement.setAttribute('data-theme','light')}}catch(e){}`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,11 +21,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://fastlaneprecision.com"),
   title: { default: "Fast Lane Precision | Aerospace & Defense CNC Machining", template: "%s | Fast Lane Precision" },
   description: "Fast Lane Precision provides tight-tolerance CNC milling, turning, Swiss machining, inspection, and production support for demanding aerospace and defense programs.",
-  openGraph: { title: "Fast Lane Precision", description: "Precision. Quality. Speed.", type: "website", images: [{ url: "/og.png", width: 1728, height: 907, alt: "Fast Lane Precision — Precision. Quality. Speed." }] },
-  twitter: { card: "summary_large_image", title: "Fast Lane Precision", description: "Aerospace + defense precision manufacturing.", images: ["/og.png"] },
+  openGraph: { title: "Fast Lane Precision", description: "Precision. Quality. Speed.", type: "website" },
+  twitter: { card: "summary", title: "Fast Lane Precision", description: "Aerospace + defense precision manufacturing." },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/media/flp-logo.svg",
+    shortcut: "/media/flp-logo.svg",
   },
 };
 
@@ -33,6 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -48,6 +54,7 @@ export default function RootLayout({
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <StickyCTA />
       </body>
     </html>
   );
