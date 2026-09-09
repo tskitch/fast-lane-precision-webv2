@@ -214,7 +214,7 @@ button,input,select,textarea{font:inherit}
 .adjacent{display:flex;justify-content:space-between;background:var(--bg-alt);border-top:1px solid var(--border)}
 .adjacent a{padding:30px 5vw;font:11px var(--font-mono);text-transform:uppercase}
 .document-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-.document-grid button{min-height:180px;border:1px solid var(--border);background:var(--bg-elevated);color:var(--fg-muted);padding:20px;text-align:left;display:flex;flex-direction:column;justify-content:space-between}
+.document-grid a{min-height:180px;border:1px solid var(--border);background:var(--bg-elevated);color:var(--fg-muted);padding:20px;text-align:left;display:flex;flex-direction:column;justify-content:space-between}
 .document-grid span{font:11px var(--font-mono)}
 .document-grid small{font:9px var(--font-mono)}
 .industry-pages{padding:4vw 5vw 10vw}

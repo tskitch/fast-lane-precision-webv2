@@ -35,7 +35,7 @@ export default function Quality(){return <>
     />
   </section>
   <section className="split-dark"><MediaPlaceholder label="ZEISS CMM / QUALITY LAB PHOTO" index="QLT—02"/><div><SectionHead index="02" eyebrow="INSPECTION EQUIPMENT" title="Measurement matched to the feature."/><ul className="big-list">{equipment.Inspection.map(x=><li key={x}>{x}</li>)}<li>Digital inspection + reporting tools</li></ul></div></section>
-  <section className="document-section alt-section"><SectionHead index="03" eyebrow="DOCUMENT CONTROL" title="Certificates and quality clauses."/><div className="document-grid">{["AS9100D CERTIFICATE","ITAR REGISTRATION STATEMENT","QUALITY CLAUSES"].map(x=><button key={x} disabled><span>[DOWNLOAD {x} — PDF]</span><small>ADD APPROVED DOCUMENT BEFORE ENABLING</small></button>)}</div></section>
+  <section className="document-section alt-section"><SectionHead index="03" eyebrow="DOCUMENT CONTROL" title="Certificates and quality clauses."/><div className="document-grid">{[{ title: "AS9100D CERTIFICATE", href: "/AS9100%20cert.pdf" }, { title: "ITAR REGISTRATION STATEMENT", href: "/Registration%20Letter%20M40713.pdf" }].map(x=><a key={x.title} href={x.href} target="_blank" rel="noopener noreferrer"><span>[DOWNLOAD {x.title} — PDF]</span><small>OPEN PDF</small></a>)}</div></section>
   <section className="quality-note alt-section"><SectionHead index="04" eyebrow="DIMENSIONAL CONTROL" title="Capability is application-specific." copy="Fast Lane Precision may hold features to approximately ±0.0001 in / ±0.0025 mm where geometry, material, measurement method, and process allow. Every requirement is reviewed for manufacturability; this is not a blanket tolerance guarantee."/></section><CTASection />
 </>;}
 
