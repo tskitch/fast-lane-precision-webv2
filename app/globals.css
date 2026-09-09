@@ -327,3 +327,11 @@ button,input,select,textarea{font:inherit}
   .reveal{opacity:1;transform:none}
   .typewriter-cursor{animation:none}
 }
+
+/* Temporary RFQ notice */
+.rfq-dialog{margin:auto;width:min(560px,calc(100% - 40px));max-height:calc(100dvh - 40px);overflow:auto;padding:clamp(24px,5vw,40px);border:1px solid var(--border-strong);background:var(--bg-elevated);color:var(--fg);font-family:var(--font-sans)}
+.rfq-dialog::backdrop{background:rgb(0 0 0 / .7)}
+.rfq-dialog h2{font-size:clamp(24px,4vw,32px);line-height:1.15;margin:0 0 20px}
+.rfq-notice p{font:16px/1.6 var(--font-sans);margin:0 0 24px;overflow-wrap:anywhere}
+.rfq-notice p a{text-decoration:underline;text-underline-offset:3px}
+.rfq-dialog .rfq-notice{margin-bottom:16px}

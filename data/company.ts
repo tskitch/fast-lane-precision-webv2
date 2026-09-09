@@ -4,10 +4,9 @@ export const company = {
   location: "Riverside, California",
   // Published in Fast Lane Precision's AS9100 certificate. Confirm before launch.
   address: "1221 Dodson Way, Riverside, CA 92507",
-  // Public directories disagree. Replace only after direct verification.
-  phone: "[PHONE NUMBER]",
-  // No verified public RFQ address was found.
-  email: "[RFQ EMAIL]",
+  phone: "(951) 782-0271",
+  phoneHref: "tel:+19517820271",
+  email: "barry@fastlaneprecision.com",
   experience: "25+ years",
   certifications: ["AS9100D", "ITAR Registered"],
   description:

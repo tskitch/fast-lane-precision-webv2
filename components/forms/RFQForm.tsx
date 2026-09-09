@@ -1,4 +1,6 @@
 "use client";
+import { RFQ_ENABLED } from "@/data/rfq";
+import { RFQNotice } from "./RFQNotice";
 import { useState } from "react";
 
 const fields = [
@@ -11,9 +13,11 @@ export function RFQForm() {
   const [message, setMessage] = useState("");
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!RFQ_ENABLED) return;
     if (!e.currentTarget.checkValidity()) return;
     setMessage("Form interface complete. Connect this form to the approved Fast Lane Precision email or CRM endpoint before launch.");
   }
+  if (!RFQ_ENABLED) return <div id="rfq-notice"><RFQNotice /></div>;
   return (
     <form className="rfq-form" onSubmit={submit}>
       <div className="form-grid">

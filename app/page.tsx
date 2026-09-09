@@ -1,3 +1,4 @@
+import { RFQLink } from "@/components/ui/RFQLink";
 import Link from "next/link";
 import { capabilities } from "@/data/capabilities";
 import { equipment } from "@/data/equipment";
@@ -34,7 +35,7 @@ export default function Home() {
           <HeroTypewriter lines={["Precision.", "Quality.", "Speed."]} />
           <p>Complex, mission-critical components manufactured with responsive execution, material traceability, and uncompromising dimensional control from Riverside, California.</p>
           <div className="button-row">
-            <Link className="button button-accent" href="/contact">Request a Quote ↗</Link>
+            <RFQLink className="button button-accent">Request a Quote ↗</RFQLink>
             <Link className="button button-ghost" href="/capabilities">Explore Capabilities</Link>
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { RFQLink } from "@/components/ui/RFQLink";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -45,7 +46,7 @@ export function Header() {
         </div>
         {links.map(([name, href]) => <Link key={href} href={href}>{name}</Link>)}
         <ThemeToggle />
-        <Link href="/contact" className="nav-cta">Request a Quote</Link>
+        <RFQLink className="nav-cta">Request a Quote</RFQLink>
       </nav>
       <button className="menu-button" onClick={() => setOpen(true)} aria-expanded={open} aria-controls="mobile-menu" aria-label="Open menu"><Menu /></button>
       {open && (
@@ -57,7 +58,7 @@ export function Header() {
             )}
           </nav>
           <div className="button-row">
-            <Link href="/contact" className="button button-accent" onClick={() => setOpen(false)}>Request a Quote</Link>
+            <RFQLink className="button button-accent">Request a Quote</RFQLink>
             <ThemeToggle />
           </div>
         </div>

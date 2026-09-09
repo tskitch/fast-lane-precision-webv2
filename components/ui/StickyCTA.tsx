@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { RFQLink } from "@/components/ui/RFQLink";
+
 import { useEffect, useState } from "react";
 
 export function StickyCTA() {
@@ -16,7 +17,7 @@ export function StickyCTA() {
   return (
     <div className={`sticky-cta ${show ? "is-visible" : ""}`} aria-hidden={!show}>
       <span className="sticky-cta-text">Have a drawing ready?</span>
-      <Link href="/contact" className="button button-accent" tabIndex={show ? 0 : -1}>Request a Quote ↗</Link>
+      <RFQLink className="button button-accent" tabIndex={show ? 0 : -1}>Request a Quote ↗</RFQLink>
     </div>
   );
 }

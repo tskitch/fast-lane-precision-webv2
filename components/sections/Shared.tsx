@@ -1,3 +1,4 @@
+import { RFQLink } from "@/components/ui/RFQLink";
 import Link from "next/link";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
 import { Label } from "@/components/ui/Primitives";
@@ -17,7 +18,7 @@ export function CTASection() {
       <Label>START A CONVERSATION / RFQ</Label>
       <h2>Bring Us the Part<br />Others Avoid.</h2>
       <p>Difficult geometry. Challenging materials. Urgent schedules. Demanding documentation. Send the drawing and requirements; our team will review the path forward.</p>
-      <div className="button-row"><Link href="/contact" className="button button-light">Request a Quote ↗</Link><Link href="/contact" className="button button-ghost">Contact Our Team</Link></div>
+      <div className="button-row"><RFQLink className="button button-light">Request a Quote ↗</RFQLink><Link href="/contact" className="button button-ghost">Contact Our Team</Link></div>
     </section>
   );
 }
